@@ -20,7 +20,7 @@
    <string>Лаборотарные работы 1 и 2</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QOpenGLWidget" name="openGLWidget">
+   <widget class="QOpenGLWidget" name="gl_widget">
     <property name="geometry">
      <rect>
       <x>10</x>
