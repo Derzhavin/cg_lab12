@@ -1,1 +1,1 @@
-# Computer Graphics lab 1 and 2 
+# Computer Graphics labs 1 and 2 
