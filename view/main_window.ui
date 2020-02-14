@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Лаборотарные работы 1 и 2</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QOpenGLWidget" name="openGLWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>580</width>
+      <height>580</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(152, 152, 152);</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxAPI">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>10</y>
+      <width>190</width>
+      <height>580</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+	border: none;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_14">
+     <property name="spacing">
+      <number>30</number>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="groupBoxPrimitives">
+       <property name="title">
+        <string>Примитивы</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_13">
+        <item>
+         <widget class="QComboBox" name="comboBoxPrimitives">
+          <item>
+           <property name="text">
+            <string>GL_POINT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_LINES</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_LINE_STRIP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_LINE_LOOP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_TRIANGLES</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_TRIANGLE_STRIP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_TRIANGLE_FAN</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_QUADS</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_QUAD_STRIP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_POLYGON</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBoxTransparancyTest">
+       <property name="title">
+        <string>Тест прозрачности</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_12">
+        <item>
+         <widget class="QComboBox" name="comboBoxTransparencyTest">
+          <item>
+           <property name="text">
+            <string>GL_NEVER</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_LESS</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_EQUAL</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_LEQUAL</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_GREATER</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_NOTEQUAL</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_GEQUAL</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ALWAYS</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBoxMixTest">
+       <property name="title">
+        <string>Тест смешивания</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <widget class="QComboBox" name="comboBoxMixTest_1">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt;&quot;&gt;sfactor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>GL_ZERO</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_DST_COLOR</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE_MINUS_DST_COLOR</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_SRC_ALPHA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE_MINUS_SRC_ALPHA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_DST_ALPHA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE_MINUS_DST_ALPHA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_SRC_ALPHA_SATURATE</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxMixTest_2">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt;&quot;&gt;dfactor &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>GL_ZERO</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_SRC_COLOR</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE_MINUS_SRC_COLOR</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_SRC_ALPHA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE_MINUS_SRC_ALPHA</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_DST_ALPHA </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GL_ONE_MINUS_DST_ALPHA</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBoxClipping">
+       <property name="title">
+        <string>Отсечение</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <widget class="QLabel" name="labelClippingX">
+          <property name="text">
+           <string>x</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSliderClippingX">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelClippingY">
+          <property name="text">
+           <string>y</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSliderClippingY">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelClippingHeight">
+          <property name="text">
+           <string>height</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSliderClippingHeight">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelClippingWidth">
+          <property name="text">
+           <string>width</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSliderClippingWidth">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
