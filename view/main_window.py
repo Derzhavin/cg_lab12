@@ -13,7 +13,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
 
-        self.model = Model('GL_POINTS', 'GL_NEVER', 'GL_ZERO', 'GL_ZERO', 0, 0, 20, 20)
+        self.model = Model('GL_POINTS', 'GL_NEVER', 0, 'GL_ZERO', 'GL_ZERO', 0, 0, 200, 100)
 
         uic.loadUi(path.join(path.dirname(__file__), path_to_main_window), self)
 
@@ -23,6 +23,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.comboBoxPrimitives.currentIndexChanged.connect(self.set_primitive)
         self.comboBoxTransparencyTest.currentIndexChanged.connect(self.test_transparency)
+        self.horizontalSliderTransparencyTest.sliderReleased.connect(self.test_transparency_ref)
         self.comboBoxMixTest_1.currentIndexChanged.connect(self.test_mix_1)
         self.comboBoxMixTest_2.currentIndexChanged.connect(self.test_mix_2)
         self.horizontalSliderClippingX.sliderReleased.connect(self.set_clipping_x)
@@ -31,7 +32,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.horizontalSliderClippingWidth.sliderReleased.connect(self.set_clipping_width)
 
         self._init_combo_box(self.comboBoxPrimitives, self.model.primitive)
-        self._init_combo_box(self.comboBoxTransparencyTest, self.model.transparency)
+        self._init_combo_box(self.comboBoxTransparencyTest, self.model.func)
         self._init_combo_box(self.comboBoxMixTest_1, self.model.s_factor)
         self._init_combo_box(self.comboBoxMixTest_2, self.model.d_factor)
 
@@ -46,29 +47,33 @@ class MainWindow(QtWidgets.QMainWindow):
         self.gl_widget.update()
 
     def test_transparency(self):
-        print('test_transparency')
-        pass
+        self.model.func = self.comboBoxTransparencyTest.currentText()
+        self.gl_widget.update()
+
+    def test_transparency_ref(self):
+        self.model.ref = int(self.horizontalSliderTransparencyTest.value())
+        self.gl_widget.update()
 
     def test_mix_1(self):
-        print('test_mix_1')
-        pass
+        self.model.s_factor = self.comboBoxMixTest_1.currentText()
+        self.gl_widget.update()
 
     def test_mix_2(self):
-        print('test_mix_2')
-        pass
+        self.model.d_factor = self.comboBoxMixTest_2.currentText()
+        self.gl_widget.update()
 
     def set_clipping_x(self):
-        print('set_clipping_x')
-        pass
+        self.model.clipping_x = int(self.horizontalSliderClippingX.value())
+        self.gl_widget.update()
 
     def set_clipping_y(self):
-        print('set_clipping_y')
-        pass
+        self.model.clipping_y = int(self.horizontalSliderClippingY.value())
+        self.gl_widget.update()
 
     def set_clipping_width(self):
-        print('set_clipping_width')
-        pass
+        self.model.clipping_width = int(self.horizontalSliderClippingWidth.value())
+        self.gl_widget.update()
 
     def set_clipping_height(self):
-        print('set_clipping_height')
-        pass
+        self.model.clipping_height = int(self.horizontalSliderClippingHeight.value())
+        self.gl_widget.update()

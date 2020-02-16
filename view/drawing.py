@@ -1,9 +1,11 @@
 from OpenGL.GL import *
 
+from .utilities import *
+
 
 def init_gl_widget(gl_widget, model):
     gl_widget.initializeGL()
-    gl_widget.paintGL = lambda: paint_gl(model)
+    gl_widget.paintGL = lambda: paint_gl(model, gl_widget)
     gl_widget.initializeGL = initialize_gl
     gl_widget.resizeGL = lambda w, h: resize_gl(gl_widget)
 
@@ -14,12 +16,40 @@ def initialize_gl():
     glEnable(GL_DEPTH_TEST)
 
 
-def paint_gl(model):
+def paint_gl(model, gl_widget):
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     glEnable(GL_SCISSOR_TEST)
     glEnable(GL_ALPHA_TEST)
     glEnable(GL_BLEND)
 
+    glBlendFunc(str_to_fact(model.s_factor), str_to_fact(model.d_factor))
+    glAlphaFunc(str_func_to_gl_const(model.func), model.ref / 100)
+
+    _, _, w, h = gl_widget.geometry().getRect()
+
+    glScissor(int(model.clipping_x * w / 100),
+              int(model.clipping_y * h / 100),
+              int(w * model.clipping_width / 100),
+              int(h * model.clipping_height / 100)
+              )
+
+    draw_primitive(model)
+
+    glDisable(GL_BLEND)
+    glDisable(GL_ALPHA_TEST)
+    glDisable(GL_SCISSOR_TEST)
+
+
+def resize_gl(gl_widget):
+    glViewport(*gl_widget.geometry().getRect())
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    glOrtho(0, 200, 0, 100, 0, 200)
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+
+
+def draw_primitive(model):
     if model.primitive == 'GL_POINTS':
         points()
     elif model.primitive == 'GL_LINES':
@@ -40,19 +70,6 @@ def paint_gl(model):
         quad_strip()
     elif model.primitive == 'GL_POLYGON':
         polygon()
-
-    glDisable(GL_BLEND)
-    glDisable(GL_ALPHA_TEST)
-    glDisable(GL_SCISSOR_TEST)
-
-
-def resize_gl(gl_widget):
-    glViewport(*gl_widget.geometry().getRect())
-    glMatrixMode(GL_PROJECTION)
-    glLoadIdentity()
-    glOrtho(0, 200, 0, 100, 0, 200)
-    glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()
 
 
 def points():
