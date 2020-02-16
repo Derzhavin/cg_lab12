@@ -16,20 +16,19 @@ class MainWindow(QtWidgets.QMainWindow):
         self.model = Model('GL_POINTS', 'GL_NEVER', 0, 'GL_ZERO', 'GL_ZERO', 0, 0, 200, 100)
 
         uic.loadUi(path.join(path.dirname(__file__), path_to_main_window), self)
-
         self.setWindowIcon(QtGui.QIcon(path_to_icon))
 
         init_gl_widget(self.gl_widget, self.model)
 
         self.comboBoxPrimitives.currentIndexChanged.connect(self.set_primitive)
-        self.comboBoxTransparencyTest.currentIndexChanged.connect(self.test_transparency)
-        self.horizontalSliderTransparencyTest.sliderReleased.connect(self.test_transparency_ref)
-        self.comboBoxMixTest_1.currentIndexChanged.connect(self.test_mix_1)
-        self.comboBoxMixTest_2.currentIndexChanged.connect(self.test_mix_2)
-        self.horizontalSliderClippingX.sliderReleased.connect(self.set_clipping_x)
-        self.horizontalSliderClippingY.sliderReleased.connect(self.set_clipping_y)
-        self.horizontalSliderClippingHeight.sliderReleased.connect(self.set_clipping_height)
-        self.horizontalSliderClippingWidth.sliderReleased.connect(self.set_clipping_width)
+        self.comboBoxTransparencyTest.currentIndexChanged.connect(self.test_transparency_func)
+        self.horizontalSliderTransparencyTest.valueChanged.connect(self.test_transparency_ref)
+        self.comboBoxMixTest_1.currentIndexChanged.connect(self.test_mix_s_factor)
+        self.comboBoxMixTest_2.currentIndexChanged.connect(self.test_mix_d_factor)
+        self.horizontalSliderClippingX.valueChanged.connect(self.set_clipping_x)
+        self.horizontalSliderClippingY.valueChanged.connect(self.set_clipping_y)
+        self.horizontalSliderClippingHeight.valueChanged.connect(self.set_clipping_height)
+        self.horizontalSliderClippingWidth.valueChanged.connect(self.set_clipping_width)
 
         self._init_combo_box(self.comboBoxPrimitives, self.model.primitive)
         self._init_combo_box(self.comboBoxTransparencyTest, self.model.func)
@@ -46,7 +45,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.model.primitive = self.comboBoxPrimitives.currentText()
         self.gl_widget.update()
 
-    def test_transparency(self):
+    def test_transparency_func(self):
         self.model.func = self.comboBoxTransparencyTest.currentText()
         self.gl_widget.update()
 
@@ -54,11 +53,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.model.ref = int(self.horizontalSliderTransparencyTest.value())
         self.gl_widget.update()
 
-    def test_mix_1(self):
+    def test_mix_s_factor(self):
         self.model.s_factor = self.comboBoxMixTest_1.currentText()
         self.gl_widget.update()
 
-    def test_mix_2(self):
+    def test_mix_d_factor(self):
         self.model.d_factor = self.comboBoxMixTest_2.currentText()
         self.gl_widget.update()
 

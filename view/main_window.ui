@@ -95,6 +95,12 @@
        <layout class="QVBoxLayout" name="verticalLayout_13">
         <item>
          <widget class="QComboBox" name="comboBoxPrimitives">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string>примитив</string>
+          </property>
           <item>
            <property name="text">
             <string>GL_POINTS</string>
@@ -158,6 +164,12 @@
        <layout class="QVBoxLayout" name="verticalLayout_12">
         <item>
          <widget class="QComboBox" name="comboBoxTransparencyTest">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string>func</string>
+          </property>
           <item>
            <property name="text">
             <string>GL_NEVER</string>
@@ -202,8 +214,17 @@
         </item>
         <item>
          <widget class="QSlider" name="horizontalSliderTransparencyTest">
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string>ref</string>
+          </property>
           <property name="maximum">
            <number>100</number>
+          </property>
+          <property name="value">
+           <number>0</number>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -221,6 +242,9 @@
        <layout class="QVBoxLayout" name="verticalLayout_11">
         <item>
          <widget class="QComboBox" name="comboBoxMixTest_1">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt;&quot;&gt;sfactor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -273,6 +297,9 @@
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxMixTest_2">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt;&quot;&gt;dfactor &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -308,7 +335,7 @@
           </item>
           <item>
            <property name="text">
-            <string>GL_DST_ALPHA </string>
+            <string>GL_DST_ALPHA</string>
            </property>
           </item>
           <item>
@@ -336,6 +363,12 @@
         </item>
         <item>
          <widget class="QSlider" name="horizontalSliderClippingX">
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="maximum">
+           <number>100</number>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -350,6 +383,12 @@
         </item>
         <item>
          <widget class="QSlider" name="horizontalSliderClippingY">
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="maximum">
+           <number>100</number>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -358,12 +397,21 @@
         <item>
          <widget class="QLabel" name="labelClippingHeight">
           <property name="text">
-           <string>height</string>
+           <string>Высота</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QSlider" name="horizontalSliderClippingHeight">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="value">
+           <number>100</number>
+          </property>
+          <property name="sliderPosition">
+           <number>100</number>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -372,12 +420,18 @@
         <item>
          <widget class="QLabel" name="labelClippingWidth">
           <property name="text">
-           <string>width</string>
+           <string>Ширина</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QSlider" name="horizontalSliderClippingWidth">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="value">
+           <number>100</number>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>

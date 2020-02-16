@@ -74,56 +74,60 @@ def draw_primitive(model):
 
 def points():
     glPointSize(6)
+
     glBegin(GL_POINTS)
-    glColor4f(0.2, 0.0, 0.58, 0.2)
-    glVertex2f(50, 50)
-    glColor4f(1.0, 0.0, 0.6, 0.4)
-    glVertex2f( 100, 45)
+
+    glColor4f(0.2, 0.0, 0.6, 0.2)
+    glVertex2f(40, 40)
+    glColor4f(0.85, 0.0, 0.6, 0.4)
+    glVertex2f( 80, 45)
     glColor4f(0.0, 1.0, 0.0, 0.6)
-    glVertex2f(150, 90)
-    glColor4f(0.0, 0.0, 0.0, 0.8)
-    glVertex2f( 190, 65)
-    glColor4f(1.0, 0.0, 0.0, 1.0)
-    glVertex2f(30, 80)
+    glVertex2f(130, 90)
+    glColor4f(0.0, 0.1, 0.1, 0.7)
+    glVertex2f( 170, 70)
+    glColor4f(0.5, 0.0, 0.0, 0.9)
+    glVertex2f(30, 70)
+
     glEnd()
 
 
 def lines():
     glLineWidth(4)
+
     glBegin(GL_LINES)
 
     glColor4f(1.0, 0.0, 0.6, 0.2)
-    glVertex2f(100, 45)
+    glVertex2f(101, 50)
     glColor4f(0.0, 1.0, 0.0, 0.4)
-    glVertex2f(150, 90)
-
+    glVertex2f(152, 70)
     glColor4f(0.0, 0.0, 0.0, 0.6)
     glVertex2f(190, 65)
     glColor4f(1.0, 0.0, 0.0, 0.8)
     glVertex2f(30, 80)
-
     glColor4f(0.0, 0.0, 0.0, 1.0)
     glVertex2f(10, 10)
-    glVertex2f(150, 50)
+    glVertex2f(150, 40)
+
     glEnd()
 
 
 def line_strip():
     glLineWidth(4)
+
     glBegin(GL_LINE_STRIP)
-    glColor4f(1.0, 0.0, 0.6, 1.0)
-    glVertex2f( 100, 45)
+
+    glColor4f(0.8, 0.1, 0.7, 1.0)
+    glVertex2f(100, 45)
     glColor4f(0.0, 1.0, 0.0, 0.8)
     glVertex2f(150, 90)
-
     glColor4f(0.0, 0.0, 0.0, 0.6)
     glVertex2f( 190, 65)
-    glColor4f(1.0, 0.0, 0.0, 0.4)
+    glColor4f(1.0, 0.0, 0.1, 0.4)
     glVertex2f(30, 80)
-
-    glColor4f(0.0, 0.0, 0.0, 0.2)
+    glColor4f(0.1, 0.1, 0.1, 0.2)
     glVertex2f(10, 10)
     glVertex2f( 150, 50)
+
     glEnd()
 
 
@@ -131,37 +135,36 @@ def line_loop():
     glLineWidth(4)
     glBegin(GL_LINE_LOOP)
 
-    glColor4f(1.0, 0.0, 0.6, 1.0)
+    glColor4f(0.6, 0.5, 0.6, 1.0)
     glVertex2f( 100, 45)
-    glColor4f(0.0, 1.0, 0.0, 0.8)
-    glVertex2f(150, 90)
-    glColor4f(0.0, 0.0, 0.0, 0.6)
-    glVertex2f( 190, 65)
+    glColor4f(0.0, 0.8, 0.0, 0.8)
+    glVertex2f(150, 30)
+    glColor4f(0.0, 0.0, 0.2, 0.5)
+    glVertex2f( 140, 60)
     glColor4f(1.0, 0.0, 0.0, 0.4)
-    glVertex2f(30, 80)
+    glVertex2f(10, 80)
     glColor4f(0.0, 0.0, 0.0, 0.2)
     glVertex2f(10, 10)
-    glColor4f(1.0, 1.0, 0.0, 0.1)
-    glVertex2f( 150, 50)
+    glColor4f(0.6, 0.6, 0.0, 0.1)
+    glVertex2f( 130, 50)
     glEnd()
 
 
 def triangles():
     glBegin(GL_TRIANGLES)
 
-    glColor4f(1.0, 0.0, 0.6, 1.0)
-    glVertex2f( 100, 45)
-    glColor4f(0.0, 1.0, 0.0, 0.8)
-    glVertex2f(150, 90)
-    glColor4f(0.0, 0.0, 0.0, 0.6)
+    glColor4f(0.6, 0.5, 0.6, 1.0)
+    glVertex2f(100, 45)
+    glColor4f(0.0, 0.5, 0.0, 0.8)
+    glVertex2f(130, 95)
+    glColor4f(0.0, 0.5, 0.0, 0.8)
     glVertex2f( 190, 65)
-
-    glColor4f(1.0, 0.0, 0.0, 0.4)
-    glVertex2f(30, 80)
-    glColor4f(0.0, 0.0, 0.0, 0.2)
-    glVertex2f(10, 10)
-    glColor4f(1.0, 1.0, 0.0, 0.1)
-    glVertex2f( 150, 50)
+    glColor4f(1.0, 0.0, 0.0, 0.3)
+    glVertex2f(30, 55)
+    glColor4f(0.0, 0.0, 0.0, 0.4)
+    glVertex2f(80, 80)
+    glColor4f(1.0, 0.9, 0.2, 0.1)
+    glVertex2f( 130, 60)
 
     glEnd()
 
@@ -169,14 +172,13 @@ def triangles():
 def triangle_strip():
     glBegin(GL_TRIANGLE_STRIP)
 
-    glColor4f(1.0, 0.0, 0.6, 1.0)
-    glVertex2f( 100, 45)
-    glColor4f(0.0, 1.0, 0.0, 0.8)
+    glColor4f(0.8, 0.0, 0.6, 1.0)
+    glVertex2f(70, 60)
+    glColor4f(0.1, 1.0, 0.0, 0.8)
     glVertex2f(150, 90)
-    glVertex2f( 190, 65)
-
-    glColor4f(1.0, 0.0, 0.0, 0.4)
-    glVertex2f(30, 80)
+    glVertex2f(140, 55)
+    glColor4f(0.9, 0.0, 0.0, 0.45)
+    glVertex2f(30, 10)
     glColor4f(1.0, 1.0, 0.0, 0.1)
 
     glEnd()
@@ -186,12 +188,11 @@ def triangle_fan():
     glBegin(GL_TRIANGLE_FAN)
 
     glColor4f(1.0, 0.0, 0.6, 0.4)
-    glVertex2f( 100, 45)
-    glVertex2f(50, 50)
-
+    glVertex2f( 70, 40)
+    glVertex2f(40, 40)
     glColor4f(0.0, 1.0, 0.0, 0.6)
     glVertex2f(150, 90)
-    glVertex2f( 190, 65)
+    glVertex2f(190, 65)
 
     glEnd()
 
@@ -200,22 +201,20 @@ def quads():
     glBegin(GL_QUADS)
 
     glColor4f(1.0, 0.0, 0.6, 0.1)
-    glVertex2f( 10, 10)
+    glVertex2f(30, 10)
     glVertex2f(10, 20)
-    glVertex2f( 20, 20)
-    glVertex2f(20, 10)
-
+    glVertex2f(75, 20)
+    glVertex2f(80, 50)
     glColor4f(0.0, 0.0, 0.0, 0.1)
-    glVertex2f( 100, 45)
-    glVertex2f(50, 50)
-    glVertex2f(70, 60)
-    glVertex2f( 110, 60)
-
+    glVertex2f(50, 45)
+    glVertex2f(30, 50)
+    glVertex2f(35, 60)
+    glVertex2f(80, 60)
     glColor4f(0.2, 0.0, 0.58, 0.1)
     glVertex2f(90, 70)
     glVertex2f(150, 90)
-    glVertex2f( 190, 65)
-    glVertex2f( 100, 45)
+    glVertex2f(190, 65)
+    glVertex2f(50, 50)
 
     glEnd()
 
@@ -224,15 +223,14 @@ def quad_strip():
     glBegin(GL_QUAD_STRIP)
 
     glColor4f(0.0, 0.0, 0.0, 0.1)
-    glVertex2f( 30, 10)
+    glVertex2f(30, 10)
     glColor4f(1.0, 0.0, 0.6, 0.9)
     glVertex2f(10, 40)
-    glVertex2f( 30, 70)
-    glVertex2f(60, 70)
-
+    glVertex2f(30, 90)
+    glVertex2f(60, 80)
     glColor4f(0.0, 0.0, 0.0, 0.1)
-    glVertex2f(80, 40)
-    glVertex2f(60, 10)
+    glVertex2f(70, 40)
+    glVertex2f(60, 30)
 
     glEnd()
 
@@ -240,14 +238,14 @@ def quad_strip():
 def polygon():
     glBegin(GL_POLYGON)
 
-    glColor4f(1.0, 0.0, 0.6, 0.9)
-    glVertex2f( 30, 10)
-    glVertex2f(10, 40)
-    glVertex2f( 30, 70)
-    glVertex2f(60, 70)
-
+    glColor4f(0.1, 0.2, 0.9, 0.9)
+    glVertex2f(40, 10)
+    glVertex2f(15, 40)
+    glColor4f(0.5, 0.5, 0.9, 0.8)
+    glVertex2f(40, 70)
+    glVertex2f(65, 80)
     glColor4f(0.0, 0.0, 0.0, 0.1)
-    glVertex2f(80, 40)
-    glVertex2f(60, 10)
+    glVertex2f(120, 50)
+    glVertex2f(100, 10)
 
     glEnd()
