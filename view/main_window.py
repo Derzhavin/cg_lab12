@@ -1,21 +1,25 @@
-import os.path as path
+from os import path
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-import OpenGL.GL as gl
 
-from model import *
-from drawing import *
+from model import Model
+
+from .drawing import *
 
 path_to_main_window = './main_window.ui'
+path_to_icon = './imgs/app_icon.png'
 
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
+
+        self.model = Model('GL_POINTS', 'GL_NEVER', 'GL_ZERO', 'GL_ZERO', 0, 0, 20, 20)
+
         uic.loadUi(path.join(path.dirname(__file__), path_to_main_window), self)
 
-        self.setWindowIcon(QtGui.QIcon('./imgs/app_icon.png'))
+        self.setWindowIcon(QtGui.QIcon(path_to_icon))
 
-        init_gl(self.gl_widget)
+        init_gl_widget(self.gl_widget, self.model)
 
         self.comboBoxPrimitives.currentIndexChanged.connect(self.set_primitive)
         self.comboBoxTransparencyTest.currentIndexChanged.connect(self.test_transparency)
@@ -26,70 +30,20 @@ class MainWindow(QtWidgets.QMainWindow):
         self.horizontalSliderClippingHeight.sliderReleased.connect(self.set_clipping_height)
         self.horizontalSliderClippingWidth.sliderReleased.connect(self.set_clipping_width)
 
-        self._init_comboBox(self.comboBoxPrimitives, gl.GL_LINES.__repr__())
-        self._init_comboBox(self.comboBoxTransparencyTest, gl.GL_LESS.__repr__())
-        self._init_comboBox(self.comboBoxMixTest_1, gl.GL_ONE.__repr__())
-        self._init_comboBox(self.comboBoxMixTest_2, gl.GL_ONE.__repr__())
+        self._init_combo_box(self.comboBoxPrimitives, self.model.primitive)
+        self._init_combo_box(self.comboBoxTransparencyTest, self.model.transparency)
+        self._init_combo_box(self.comboBoxMixTest_1, self.model.s_factor)
+        self._init_combo_box(self.comboBoxMixTest_2, self.model.d_factor)
 
-        self.model = Model(gl.GL_POINT, gl.GL_NEVER, gl.GL_ZERO, gl.GL_ZERO, 0, 0, 20, 20)
-
-    def _init_comboBox(self, combo, text):
+    @staticmethod
+    def _init_combo_box(combo, text):
         index = combo.findText(text, QtCore.Qt.MatchFixedString)
         if index >= 0:
             combo.setCurrentIndex(index)
 
     def set_primitive(self):
-        text = self.comboBoxPrimitives.currentText()
-        
-        if text == 'GL_POINTS':
-            model.primitive = gl.GL_POINTS
-            points()
-            return
-        
-        if text == 'GL_LINES':
-            model.primitive = gl.GL_LINES
-            lines()
-            return
-        
-        if text == 'GL_LINE_STRIP':
-            model.primitive = gl.GL_LINE_STRIP
-            line_strip()
-            return
-        
-        if text == 'GL_LINE_LOOP':
-            model.primitive = gl.GL_LINE_LOOP
-            line_loop()
-            return
-        
-        if text == 'GL_TRIANGLES':
-            model.primitive = gl.GL_TRIANGLES
-            triangles()
-            return
-        
-        if text == 'GL_TRIANGLE_STRIP':
-            model.primitive = gl.GL_TRIANGLE_STRIP
-            triangle_strip()
-            return
-        
-        if text == 'GL_TRIANGLE_FAN':
-            model.primitive = gl.GL_TRIANGLE_FAN
-            triangle_fan()
-            return
-        
-        if text == 'GL_QUADS':
-            model.primitive = gl.GL_QUADS
-            quads()
-            return
-        
-        if text == 'GL_QUAD_STRIP':
-            model.primitive = gl.GL_QUAD_STRIP
-            quad_strip()
-            return
-
-        if text == 'GL_POLYGON':
-            model.primitive = gl.GL_POLYGON
-            polygon()
-            return
+        self.model.primitive = self.comboBoxPrimitives.currentText()
+        self.gl_widget.update()
 
     def test_transparency(self):
         print('test_transparency')

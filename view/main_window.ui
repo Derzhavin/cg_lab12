@@ -97,7 +97,7 @@
          <widget class="QComboBox" name="comboBoxPrimitives">
           <item>
            <property name="text">
-            <string>GL_POINT</string>
+            <string>GL_POINTS</string>
            </property>
           </item>
           <item>
