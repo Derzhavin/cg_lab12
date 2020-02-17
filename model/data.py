@@ -4,7 +4,8 @@ from dataclasses import dataclass
 @dataclass
 class Model:
     primitive: str
-    transparency: str
+    func: str
+    ref: int
     s_factor: str
     d_factor: str
     clipping_x: int
