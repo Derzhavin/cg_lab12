@@ -11,6 +11,7 @@ def init_gl_widget(gl_widget, model):
 
 
 def initialize_gl():
+    glClearColor(0.8, 0.8, 0.8, 1)
     glEnable(GL_BLEND)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
     glEnable(GL_DEPTH_TEST)
