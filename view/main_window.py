@@ -1,78 +1,34 @@
-from os import path
-from PyQt5 import QtWidgets, uic, QtGui, QtCore
+from PyQt5 import QtWidgets, QtGui
 
 from model import Model
 
-from .drawing import *
+from drawing import *
+from .main_window_ui import Ui_MainWindow
 
-path_to_main_window = './main_window.ui'
 path_to_icon = './imgs/app_icon.png'
 
 
-class MainWindow(QtWidgets.QMainWindow):
+class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
 
-        self.model = Model('GL_POINTS', 'GL_NEVER', 0, 'GL_ZERO', 'GL_ZERO', 0, 0, 200, 100)
-
-        uic.loadUi(path.join(path.dirname(__file__), path_to_main_window), self)
+        self.model = Model(-1)
+        self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon(path_to_icon))
 
         init_gl_widget(self.gl_widget, self.model)
 
-        self.comboBoxPrimitives.currentIndexChanged.connect(self.set_primitive)
-        self.comboBoxTransparencyTest.currentIndexChanged.connect(self.test_transparency_func)
-        self.horizontalSliderTransparencyTest.valueChanged.connect(self.test_transparency_ref)
-        self.comboBoxMixTest_1.currentIndexChanged.connect(self.test_mix_s_factor)
-        self.comboBoxMixTest_2.currentIndexChanged.connect(self.test_mix_d_factor)
-        self.horizontalSliderClippingX.valueChanged.connect(self.set_clipping_x)
-        self.horizontalSliderClippingY.valueChanged.connect(self.set_clipping_y)
-        self.horizontalSliderClippingHeight.valueChanged.connect(self.set_clipping_height)
-        self.horizontalSliderClippingWidth.valueChanged.connect(self.set_clipping_width)
+        self.pushButtonStartDrawing.clicked.connect(self.start_drawing_fractal)
 
-        self._init_combo_box(self.comboBoxPrimitives, self.model.primitive)
-        self._init_combo_box(self.comboBoxTransparencyTest, self.model.func)
-        self._init_combo_box(self.comboBoxMixTest_1, self.model.s_factor)
-        self._init_combo_box(self.comboBoxMixTest_2, self.model.d_factor)
+    def start_drawing_fractal(self):
+        self.pushButtonStartDrawing.setDisabled(True)
+        self.textEditIterNum.setDisabled(True)
 
-    @staticmethod
-    def _init_combo_box(combo, text):
-        index = combo.findText(text, QtCore.Qt.MatchFixedString)
-        if index >= 0:
-            combo.setCurrentIndex(index)
+        iter_num_str = self.textEditIterNum.toPlainText()
+        if iter_num_str:
+            self.model.iter_num = int(iter_num_str)
 
-    def set_primitive(self):
-        self.model.primitive = self.comboBoxPrimitives.currentText()
         self.gl_widget.update()
 
-    def test_transparency_func(self):
-        self.model.func = self.comboBoxTransparencyTest.currentText()
-        self.gl_widget.update()
-
-    def test_transparency_ref(self):
-        self.model.ref = int(self.horizontalSliderTransparencyTest.value())
-        self.gl_widget.update()
-
-    def test_mix_s_factor(self):
-        self.model.s_factor = self.comboBoxMixTest_1.currentText()
-        self.gl_widget.update()
-
-    def test_mix_d_factor(self):
-        self.model.d_factor = self.comboBoxMixTest_2.currentText()
-        self.gl_widget.update()
-
-    def set_clipping_x(self):
-        self.model.clipping_x = int(self.horizontalSliderClippingX.value())
-        self.gl_widget.update()
-
-    def set_clipping_y(self):
-        self.model.clipping_y = int(self.horizontalSliderClippingY.value())
-        self.gl_widget.update()
-
-    def set_clipping_width(self):
-        self.model.clipping_width = int(self.horizontalSliderClippingWidth.value())
-        self.gl_widget.update()
-
-    def set_clipping_height(self):
-        self.model.clipping_height = int(self.horizontalSliderClippingHeight.value())
-        self.gl_widget.update()
+        self.pushButtonStartDrawing.setDisabled(False)
+        self.textEditIterNum.setDisabled(False)
